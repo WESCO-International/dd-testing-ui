@@ -43,13 +43,18 @@ const Home: React.FunctionComponent = () => {
           Enter your value:
           <input type="text" value={name} onChange={e => setName(e.target.value)} />
         </label>
-        <Button type="submit" variant="success" onClick={() => callYourAPI()}>
+        <Button
+          type="submit"
+          variant="success"
+          onClick={e => {
+            e.preventDefault()
+            callYourAPI()
+          }}
+        >
           Submit
         </Button>
       </form>
-      <div>
-        <div>{response ? <pre>{response}</pre> : 'Loading...'}</div>{' '}
-      </div>
+      <div>{response}</div>
     </Container>
   )
 }
